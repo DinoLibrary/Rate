@@ -14,13 +14,11 @@ import android.view.View;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatDialog;
-import androidx.core.content.ContextCompat;
 
 import com.willy.ratingbar.BaseRatingBar;
 import com.willy.ratingbar.RotationRatingBar;
@@ -32,7 +30,7 @@ import java.util.Date;
 import java.util.Locale;
 
 
-public class RatingDialog extends AppCompatDialog implements RatingBar.OnRatingBarChangeListener, View.OnClickListener {
+public class RatingDialog extends AppCompatDialog implements RatingBar.OnRatingBarChangeListener {
 
     private static final String SESSION_COUNT = "session_count";
     private static final String RATE5 = "rate_5";
@@ -43,10 +41,9 @@ public class RatingDialog extends AppCompatDialog implements RatingBar.OnRatingB
     private SharedPreferences sharedpreferences;
     private final Activity context;
     private final Builder builder;
-    private TextView tvTitle, tvContent, tvNegative, tvPositive;
+    private TextView tvTitle, tvContent;
     private RotationRatingBar ratingBar;
     private ImageView ivIcon;
-    private LinearLayout ratingButtons;
     Button btnRate;
     TextView btnLate;
     private final float threshold;
@@ -79,19 +76,15 @@ public class RatingDialog extends AppCompatDialog implements RatingBar.OnRatingB
 
         tvTitle = findViewById(R.id.dialog_rating_title);
         tvContent = findViewById(R.id.dialog_rating_content);
-        tvNegative = findViewById(R.id.dialog_rating_button_negative);
-        tvPositive = findViewById(R.id.dialog_rating_button_positive);
         ratingBar = findViewById(R.id.dialog_rating_rating_bar);
         ivIcon = findViewById(R.id.dialog_rating_icon);
-        ratingButtons = findViewById(R.id.dialog_rating_buttons);
         btnRate = findViewById(R.id.btnRate);
         btnLate = findViewById(R.id.btnLate);
         init();
     }
 
     private void init() {
-        GradientDrawable drawable = (GradientDrawable) context.getResources()
-                .getDrawable(R.drawable.bg_button);
+        GradientDrawable drawable = (GradientDrawable) context.getResources().getDrawable(R.drawable.rate_bg_button);
         drawable.mutate();
         drawable.setColor(builder.ratingBarBackgroundColor);
         btnRate.setBackground(drawable);
@@ -105,7 +98,7 @@ public class RatingDialog extends AppCompatDialog implements RatingBar.OnRatingB
             btnLate.setVisibility(View.GONE);
         }
 
-        if (builder.btnLate == null || builder.btnLate.equals("")) {
+        if (builder.btnLate == null || builder.btnLate.isEmpty()) {
             btnLate.setText("Maybe Later");
         } else {
             btnLate.setText(builder.btnLate);
@@ -127,7 +120,7 @@ public class RatingDialog extends AppCompatDialog implements RatingBar.OnRatingB
                 dismiss();
                 sharedpreferences = context.getSharedPreferences(MyPrefs, Context.MODE_PRIVATE);
                 if (sharedpreferences.getBoolean(RATE5, true)) {
-                    sharedpreferences.edit().putBoolean(RATE5, false).commit();
+                    sharedpreferences.edit().putBoolean(RATE5, false).apply();
                     IAReview.getInstance().showIAReview(context);
                 } else {
                     final String appPackageName = context.getPackageName(); // getPackageName() from Context or Activity object
@@ -136,7 +129,7 @@ public class RatingDialog extends AppCompatDialog implements RatingBar.OnRatingB
                     } catch (android.content.ActivityNotFoundException anfe) {
                         context.startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=" + appPackageName)));
                     }
-                    sharedpreferences.edit().putBoolean(RATED, true).commit();
+                    sharedpreferences.edit().putBoolean(RATED, true).apply();
                 }
 
 
@@ -144,24 +137,13 @@ public class RatingDialog extends AppCompatDialog implements RatingBar.OnRatingB
         });
         tvTitle.setText(builder.title);
         tvContent.setText("We’d greatly appreciate if you can rate us.");
-        tvPositive.setText(builder.positiveText);
-        tvNegative.setText(builder.negativeText);
 
         TypedValue typedValue = new TypedValue();
-        context.getTheme().resolveAttribute(R.color.accent, typedValue, true);
+        context.getTheme().resolveAttribute(R.color.rate_green, typedValue, true);
         int color = typedValue.data;
 
 //        tvTitle.setTextColor(builder.titleTextColor != 0 ? ContextCompat.getColor(context, builder.titleTextColor) : ContextCompat.getColor(context, R.color.black));
-        tvPositive.setTextColor(builder.positiveTextColor != 0 ? ContextCompat.getColor(context, builder.positiveTextColor) : color);
 
-
-        if (builder.positiveBackgroundColor != 0) {
-            tvPositive.setBackgroundResource(builder.positiveBackgroundColor);
-
-        }
-        if (builder.negativeBackgroundColor != 0) {
-            tvNegative.setBackgroundResource(builder.negativeBackgroundColor);
-        }
 
 //        if (builder.ratingBarColor != 0) {
 //            if (Build.VERSION.SDK_INT > Build.VERSION_CODES.KITKAT) {
@@ -226,22 +208,6 @@ public class RatingDialog extends AppCompatDialog implements RatingBar.OnRatingB
 
             }
         });
-        tvPositive.setOnClickListener(this);
-        tvNegative.setOnClickListener(this);
-
-        if (session == 1) {
-            tvNegative.setVisibility(View.GONE);
-        }
-    }
-
-    @Override
-    public void onClick(View view) {
-        if (view.getId() == R.id.dialog_rating_button_negative) {
-            dismiss();
-            showNever();
-        } else if (view.getId() == R.id.dialog_rating_button_positive) {
-            dismiss();
-        }
     }
 
     @Override
@@ -281,7 +247,6 @@ public class RatingDialog extends AppCompatDialog implements RatingBar.OnRatingB
     }
 
     private void openForm() {
-        ratingButtons.setVisibility(View.GONE);
         ivIcon.setVisibility(View.GONE);
         tvTitle.setVisibility(View.GONE);
         ratingBar.setVisibility(View.GONE);
@@ -298,14 +263,6 @@ public class RatingDialog extends AppCompatDialog implements RatingBar.OnRatingB
 
     public TextView getTitleTextView() {
         return tvTitle;
-    }
-
-    public TextView getPositiveButtonTextView() {
-        return tvPositive;
-    }
-
-    public TextView getNegativeButtonTextView() {
-        return tvNegative;
     }
 
     public ImageView getIconImageView() {

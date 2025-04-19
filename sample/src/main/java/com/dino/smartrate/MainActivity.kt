@@ -20,6 +20,7 @@ class MainActivity : AppCompatActivity() {
         }
         showDialogRate()
     }
+
     private fun showDialogRate() {
         val ratingDialog: RatingDialog = RatingDialog.Builder(this)
             .session(1)
@@ -27,41 +28,20 @@ class MainActivity : AppCompatActivity() {
             .setNameApp(getString(R.string.app_name))
             .setIcon(R.mipmap.ic_launcher)
             .setEmail("vapp.helpcenter@gmail.com")
-            .setDeviceInfo("1.0.1","34","Xiaomi")
+            .setDeviceInfo("1.0.1", "34", "Xiaomi")
             .isShowButtonLater(true)
             .isClickLaterDismiss(true)
             .setOnlickRate { rate ->
-                Toast.makeText(
-                    this@MainActivity,
-                    "Rate$rate",
-                    Toast.LENGTH_SHORT
-                ).show()
+                Toast.makeText(this@MainActivity, "Rate$rate", Toast.LENGTH_SHORT).show()
             }
             .setTextButtonLater("Maybe Later")
             .setOnlickMaybeLate {
-                Toast.makeText(
-                    this@MainActivity,
-                    "Feedback cannot be left blank",
-                    Toast.LENGTH_SHORT
-                ).show()
+                Toast.makeText(this@MainActivity, "Feedback cannot be left blank", Toast.LENGTH_SHORT).show()
             }
             .ratingButtonColor(R.color.black)
             .build()
 
-        //Cancel On Touch Outside
         ratingDialog.setCanceledOnTouchOutside(false)
-        //show
         ratingDialog.show()
-
-
-        //thêm vào activity trong manifest
-//        <intent-filter>
-//            <action android:name="android.intent.action.SENDTO" />
-//            <data android:scheme="mailto" />
-//            <category android:name="android.intent.category.DEFAULT" />
-//        </intent-filter>
-
-        // thêm vào activity
-//        android:windowSoftInputMode="adjustPan|adjustResize"
     }
 }
