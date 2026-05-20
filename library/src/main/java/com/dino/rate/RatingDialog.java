@@ -84,10 +84,16 @@ public class RatingDialog extends AppCompatDialog implements RatingBar.OnRatingB
     }
 
     private void init() {
-        GradientDrawable drawable = (GradientDrawable) context.getResources().getDrawable(R.drawable.rate_bg_button);
-        drawable.mutate();
-        drawable.setColor(builder.ratingBarBackgroundColor);
-        btnRate.setBackground(drawable);
+        Drawable drawable = context.getResources().getDrawable(R.drawable.rate_bg_button).mutate();
+        if (builder.ratingBarBackgroundColor != 0) {
+            try {
+                int color = context.getResources().getColor(builder.ratingBarBackgroundColor);
+                drawable.setColorFilter(color, android.graphics.PorterDuff.Mode.MULTIPLY);
+            } catch (Exception e) {
+                drawable.setColorFilter(builder.ratingBarBackgroundColor, android.graphics.PorterDuff.Mode.MULTIPLY);
+            }
+        }
+//        btnRate.setBackground(drawable);
 
         btnRate.setOnClickListener(v -> {
 

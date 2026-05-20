@@ -1,132 +1,134 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content">
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:clipChildren="false"
+    android:clipToPadding="false"
+    android:paddingTop="55dp"
+    android:paddingBottom="16dp">
 
-    <RelativeLayout
+    <!-- The 3D Modern Card with Wave inside -->
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/card_container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/dialog_rating_icon"
-        android:layout_marginTop="-55sp"
-        android:animateLayoutChanges="true"
-        android:background="@drawable/rate_rounded_rectangle"
-        android:padding="@dimen/_15sdp">
+        app:cardBackgroundColor="@android:color/transparent"
+        app:cardCornerRadius="26dp"
+        app:cardElevation="12dp"
+        app:strokeWidth="0dp">
 
-        <TextView
-            android:id="@+id/dialog_rating_title"
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_marginLeft="5dp"
-            android:layout_marginTop="@dimen/_18sdp"
-            android:layout_marginRight="5dp"
-            android:gravity="center"
-            android:lines="2"
-            android:maxLines="2"
-            android:text="We are working hard for a better user eperience."
-            android:textColor="#212121"
-            android:textSize="@dimen/_12sdp" />
+            android:layout_height="match_parent"
+            android:background="@drawable/rate_rounded_rectangle">
 
-        <TextView
-            android:id="@+id/dialog_rating_content"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/dialog_rating_title"
-            android:layout_centerHorizontal="true"
-            android:layout_marginLeft="5dp"
-            android:layout_marginTop="@dimen/_3sdp"
-            android:layout_marginRight="5dp"
-            android:gravity="center"
-            android:maxLines="1"
-            android:text="We’d greatly appreciate if you can rate us."
-            android:textColor="#5F5F5F"
-            android:textSize="@dimen/_12sdp" />
+            <!-- Wavy Header Background inside the card -->
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="match_parent"
+                android:layout_height="140dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/rate_wave_header" />
 
-        <com.willy.ratingbar.RotationRatingBar
-            android:id="@+id/dialog_rating_rating_bar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/dialog_rating_content"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="@dimen/_15sdp"
-            app:srb_clearRatingEnabled="false"
-            app:srb_clickable="true"
-            app:srb_isIndicator="false"
-            app:srb_minimumStars="0"
-            app:srb_numStars="5"
-            app:srb_rating="0"
-            app:srb_scrollable="true"
-            app:srb_starHeight="@dimen/_24sdp"
-            app:srb_starWidth="@dimen/_24sdp"
-            app:srb_stepSize="1" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingHorizontal="16dp"
+                android:paddingTop="100dp"
+                android:paddingBottom="24dp">
 
-        <ImageView
-            android:id="@+id/star2"
-            android:layout_width="@dimen/_18sdp"
-            android:layout_height="@dimen/_50sdp"
-            android:layout_below="@+id/dialog_rating_title"
-            android:layout_marginLeft="-10dp"
-            android:layout_marginTop="@dimen/_18sdp"
-            android:layout_toEndOf="@+id/dialog_rating_rating_bar"
-            android:src="@drawable/rate_abc" />
+                <TextView
+                    android:id="@+id/dialog_rating_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="We are working hard for a better user experience."
+                    android:textColor="#1E293B"
+                    android:textFontWeight="500"
+                    android:textSize="16sp" />
 
-        <ImageView
-            android:id="@+id/arrow"
-            android:layout_width="@dimen/_16sdp"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/star2"
-            android:layout_marginTop="-5dp"
-            android:layout_marginRight="@dimen/_8sdp"
-            android:layout_toStartOf="@+id/star2"
-            android:src="@drawable/rate_arrow" />
+                <TextView
+                    android:id="@+id/dialog_rating_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:gravity="center"
+                    android:text="We’d greatly appreciate it if you could rate us."
+                    android:textColor="#64748B"
+                    android:textSize="14sp" />
 
-        <TextView
-            android:id="@+id/tv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/dialog_rating_rating_bar"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="@dimen/_15sdp"
-            android:gravity="center"
-            android:text="The best we can get :)    "
-            android:textColor="#2B9999"
-            android:textSize="16sp" />
+                <com.willy.ratingbar.RotationRatingBar
+                    android:id="@+id/dialog_rating_rating_bar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="12dp"
+                    app:srb_clearRatingEnabled="false"
+                    app:srb_clickable="true"
+                    app:srb_isIndicator="false"
+                    app:srb_minimumStars="0"
+                    app:srb_numStars="5"
+                    app:srb_rating="0"
+                    app:srb_scrollable="true"
+                    app:srb_starHeight="36dp"
+                    app:srb_starPadding="6dp"
+                    app:srb_starWidth="36dp"
+                    app:srb_stepSize="1" />
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btnRate"
-            android:layout_width="@dimen/_300sdp"
-            android:layout_height="@dimen/_35sdp"
-            android:layout_below="@+id/tv"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="@dimen/_10sdp"
-            android:background="@drawable/rate_bg_button"
-            android:foreground="@drawable/rate_ripple_foreground"
-            android:gravity="center"
-            android:text="Rate"
-            android:textColor="@color/white" />
+                <TextView
+                    android:id="@+id/tv"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:gravity="center"
+                    android:text="The best we can get :)"
+                    android:textColor="#C71111"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
 
-        <TextView
-            android:id="@+id/btnLate"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/btnRate"
-            android:layout_marginTop="@dimen/_10sdp"
-            android:gravity="center"
-            android:text="Maybe Later"
-            android:textColor="#5F5F5F"
-            android:textSize="14sp" />
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btnRate"
+                    android:layout_width="match_parent"
+                    android:layout_height="54dp"
+                    android:layout_marginHorizontal="16dp"
+                    android:layout_marginTop="16dp"
+                    android:background="@drawable/rate_bg_button"
+                    android:elevation="6dp"
+                    android:foreground="?attr/selectableItemBackground"
+                    android:gravity="center"
+                    android:stateListAnimator="@null"
+                    android:text="RATE"
+                    android:textColor="@color/white"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
 
-    </RelativeLayout>
+                <TextView
+                    android:id="@+id/btnLate"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:background="?attr/selectableItemBackground"
+                    android:gravity="center"
+                    android:padding="8dp"
+                    android:text="Maybe Later"
+                    android:textColor="#94A3B8"
+                    android:textSize="13sp" />
 
+            </LinearLayout>
+        </RelativeLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+    <!-- The 3D Floating Emoji at the top center -->
     <ImageView
         android:id="@+id/dialog_rating_icon"
-        android:layout_width="@dimen/_75sdp"
-        android:layout_height="@dimen/_75sdp"
+        android:layout_width="110dp"
+        android:layout_height="110dp"
+        android:layout_alignTop="@id/card_container"
         android:layout_centerHorizontal="true"
-        android:layout_marginLeft="15dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginRight="15dp"
+        android:layout_marginTop="-40dp"
+        android:elevation="16dp"
         android:src="@drawable/rate_0" />
 
 </RelativeLayout>

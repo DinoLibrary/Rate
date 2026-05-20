@@ -1,0 +1,36 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aapt="http://schemas.android.com/aapt"
+    android:width="200dp"
+    android:height="200dp"
+    android:viewportWidth="200"
+    android:viewportHeight="200">
+    <!-- Base 3D Sphere shadow -->
+    <path android:pathData="M100,105 m-95,0 a95,95 0 1,1 190,0 a95,95 0 1,1 -190,0" android:fillColor="#33000000" />
+    <!-- Base 3D Sphere -->
+    <path android:pathData="M100,100 m-95,0 a95,95 0 1,1 190,0 a95,95 0 1,1 -190,0">
+        <aapt:attr name="android:fillColor">
+            <gradient android:centerX="60" android:centerY="40" android:gradientRadius="160" android:type="radial">
+                <item android:color="#FFFFE082" android:offset="0" />
+                <item android:color="#FFFFB300" android:offset="1" />
+            </gradient>
+        </aapt:attr>
+    </path>
+    <!-- Top Highlight for Glass/3D effect -->
+    <path android:pathData="M100,15 c-40,0 -70,20 -80,50 c15,-25 45,-40 80,-40 c35,0 65,15 80,40 c-10,-30 -40,-50 -80,-50 z">
+        <aapt:attr name="android:fillColor">
+            <gradient android:endY="65" android:startY="15" android:type="linear" android:startX="100" android:endX="100">
+                <item android:color="#99FFFFFF" android:offset="0" />
+                <item android:color="#00FFFFFF" android:offset="1" />
+            </gradient>
+        </aapt:attr>
+    </path>
+
+    <!-- Sad Eyes -->
+    <path android:pathData="M 50,70 Q 70,50 90,70" android:strokeColor="#3E2723" android:strokeWidth="10" android:strokeLineCap="round"/>
+    <path android:pathData="M 110,70 Q 130,50 150,70" android:strokeColor="#3E2723" android:strokeWidth="10" android:strokeLineCap="round"/>
+    <!-- Crying Tears -->
+    <path android:pathData="M 50,90 Q 50,120 70,120 Q 70,90 50,90" android:fillColor="#4FC3F7" />
+    <path android:pathData="M 150,90 Q 150,120 130,120 Q 130,90 150,90" android:fillColor="#4FC3F7" />
+    <!-- Sad Mouth -->
+    <path android:pathData="M 60,150 Q 100,120 140,150" android:strokeColor="#3E2723" android:strokeWidth="12" android:strokeLineCap="round"/>
+    </vector>

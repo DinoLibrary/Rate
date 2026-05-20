@@ -1,6 +1,79 @@
 <?xml version="1.0" encoding="utf-8"?>
-<shape xmlns:android="http://schemas.android.com/apk/res/android"
-    android:shape="rectangle">
-    <corners android:radius="30dp" />
-    <solid android:color="#FF8B4A" />
-</shape>
+<ripple xmlns:android="http://schemas.android.com/apk/res/android"
+    android:color="#22FFFFFF">
+
+    <item>
+        <layer-list>
+
+            <!-- Soft Shadow -->
+            <item android:top="8dp">
+
+                <shape android:shape="rectangle">
+
+                    <corners android:radius="20dp"/>
+
+                    <gradient
+                        android:angle="90"
+                        android:startColor="#22F59E0B"
+                        android:endColor="#11EA580C"/>
+
+                </shape>
+
+            </item>
+
+            <!-- Main Button -->
+            <item android:bottom="5dp">
+
+                <shape android:shape="rectangle">
+
+                    <corners android:radius="20dp"/>
+
+                    <gradient
+                        android:angle="0"
+                        android:startColor="#FFFDE68A"
+                        android:centerColor="#FFFBBF24"
+                        android:endColor="#FFF97316"/>
+
+                </shape>
+
+            </item>
+
+            <!-- Glass Highlight -->
+            <item
+                android:left="4dp"
+                android:right="4dp"
+                android:top="4dp"
+                android:bottom="34dp">
+
+                <shape android:shape="rectangle">
+
+                    <corners android:radius="16dp"/>
+
+                    <gradient
+                        android:angle="270"
+                        android:startColor="#99FFFFFF"
+                        android:endColor="#00FFFFFF"/>
+
+                </shape>
+
+            </item>
+
+            <!-- Premium Border -->
+            <item android:bottom="5dp">
+
+                <shape android:shape="rectangle">
+
+                    <corners android:radius="20dp"/>
+
+                    <stroke
+                        android:width="1dp"
+                        android:color="#55FFFFFF"/>
+
+                </shape>
+
+            </item>
+
+        </layer-list>
+    </item>
+
+</ripple>

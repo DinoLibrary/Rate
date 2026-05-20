@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aapt="http://schemas.android.com/aapt"
+    android:width="400dp"
+    android:height="160dp"
+    android:viewportWidth="400"
+    android:viewportHeight="160">
+
+    <!-- BACK WAVE -->
+    <path
+        android:pathData="M0,0 L400,0 L400,100 C300,150 200,60 100,90 C50,105 25,130 0,150 Z">
+
+        <aapt:attr name="android:fillColor">
+            <gradient
+                android:type="linear"
+                android:startX="0"
+                android:startY="0"
+                android:endX="400"
+                android:endY="160">
+
+                <!-- Soft pastel blue -->
+                <item
+                    android:color="#FFDCEFFF"
+                    android:offset="0" />
+
+                <!-- Premium sky blue -->
+                <item
+                    android:color="#FF7CCBFF"
+                    android:offset="1" />
+
+            </gradient>
+        </aapt:attr>
+    </path>
+
+    <!-- FRONT WAVE -->
+    <path
+        android:pathData="M0,0 L400,0 L400,75 C300,45 200,125 100,105 C50,95 25,75 0,55 Z">
+
+        <aapt:attr name="android:fillColor">
+            <gradient
+                android:type="linear"
+                android:startX="0"
+                android:startY="0"
+                android:endX="320"
+                android:endY="100">
+
+                <!-- Almost white -->
+                <item
+                    android:color="#FFF7FCFF"
+                    android:offset="0" />
+
+                <!-- Soft glossy blue -->
+                <item
+                    android:color="#FFA8DEFF"
+                    android:offset="1" />
+
+            </gradient>
+        </aapt:attr>
+    </path>
+
+    <!-- GLOSS HIGHLIGHT -->
+    <path
+        android:pathData="M0,55 C25,75 50,95 100,105 C200,125 300,45 400,75"
+        android:strokeWidth="2"
+        android:strokeColor="#99FFFFFF"
+        android:strokeLineCap="round" />
+
+</vector>

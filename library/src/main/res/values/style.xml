@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <style name="RatingBar" parent="Theme.AppCompat">
-        <item name="colorControlActivated">@color/rate_green</item>
+        <item name="colorControlActivated">#FFFFD54F</item>
         <item name="colorControlNormal">@color/rate_gray</item>
     </style>
 
