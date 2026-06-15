@@ -9,7 +9,7 @@
     android:paddingBottom="16dp">
 
     <!-- The 3D Modern Card with Wave inside -->
-    <com.google.android.material.card.MaterialCardView
+    <androidx.cardview.widget.CardView
         android:id="@+id/card_container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -118,7 +118,7 @@
 
             </LinearLayout>
         </RelativeLayout>
-    </com.google.android.material.card.MaterialCardView>
+    </androidx.cardview.widget.CardView>
 
     <!-- The 3D Floating Emoji at the top center -->
     <ImageView
