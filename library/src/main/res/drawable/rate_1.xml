@@ -1,36 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
 <vector xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:aapt="http://schemas.android.com/aapt"
     android:width="200dp"
     android:height="200dp"
     android:viewportWidth="200"
     android:viewportHeight="200">
-    <!-- Base 3D Sphere shadow -->
-    <path android:pathData="M100,105 m-95,0 a95,95 0 1,1 190,0 a95,95 0 1,1 -190,0" android:fillColor="#33000000" />
-    <!-- Base 3D Sphere -->
-    <path android:pathData="M100,100 m-95,0 a95,95 0 1,1 190,0 a95,95 0 1,1 -190,0">
+    <!-- Ambient Drop Shadow -->
+    <path android:pathData="M100,106 m-90,0 a90,90 0 1,1 180,0 a90,90 0 1,1 -180,0" android:fillColor="#26000000" />
+    
+    <!-- Base 3D Sphere with Rich Radial Gradient -->
+    <path android:pathData="M100,100 m-92,0 a92,92 0 1,1 184,0 a92,92 0 1,1 -184,0">
         <aapt:attr name="android:fillColor">
-            <gradient android:centerX="60" android:centerY="40" android:gradientRadius="160" android:type="radial">
-                <item android:color="#FFFFE082" android:offset="0" />
-                <item android:color="#FFFFB300" android:offset="1" />
+            <gradient android:centerX="65" android:centerY="45" android:gradientRadius="165" android:type="radial">
+                <item android:color="#FFFFFAEC" android:offset="0.0" />
+                <item android:color="#FFFFD54F" android:offset="0.25" />
+                <item android:color="#FFFFB300" android:offset="0.70" />
+                <item android:color="#FFFF8F00" android:offset="1.0" />
             </gradient>
         </aapt:attr>
     </path>
-    <!-- Top Highlight for Glass/3D effect -->
-    <path android:pathData="M100,15 c-40,0 -70,20 -80,50 c15,-25 45,-40 80,-40 c35,0 65,15 80,40 c-10,-30 -40,-50 -80,-50 z">
+    
+    <!-- Top Glass Gloss Highlight -->
+    <path android:pathData="M100,14 c-42,0 -75,18 -84,46 c18,-24 48,-36 84,-36 c36,0 66,12 84,36 c-9,-28 -42,-46 -84,-46 z">
         <aapt:attr name="android:fillColor">
-            <gradient android:endY="65" android:startY="15" android:type="linear" android:startX="100" android:endX="100">
-                <item android:color="#99FFFFFF" android:offset="0" />
+            <gradient android:endY="60" android:startY="14" android:type="linear" android:startX="100" android:endX="100">
+                <item android:color="#B3FFFFFF" android:offset="0" />
                 <item android:color="#00FFFFFF" android:offset="1" />
             </gradient>
         </aapt:attr>
     </path>
 
     <!-- Sad Eyes -->
-    <path android:pathData="M 50,70 Q 70,50 90,70" android:strokeColor="#3E2723" android:strokeWidth="10" android:strokeLineCap="round"/>
-    <path android:pathData="M 110,70 Q 130,50 150,70" android:strokeColor="#3E2723" android:strokeWidth="10" android:strokeLineCap="round"/>
-    <!-- Crying Tears -->
-    <path android:pathData="M 50,90 Q 50,120 70,120 Q 70,90 50,90" android:fillColor="#4FC3F7" />
-    <path android:pathData="M 150,90 Q 150,120 130,120 Q 130,90 150,90" android:fillColor="#4FC3F7" />
+    <path android:pathData="M 45,72 Q 65,52 85,72" android:strokeColor="#3E2723" android:strokeWidth="9" android:strokeLineCap="round"/>
+    <path android:pathData="M 115,72 Q 135,52 155,72" android:strokeColor="#3E2723" android:strokeWidth="9" android:strokeLineCap="round"/>
+    
+    <!-- Shiny Tear Drops -->
+    <path android:pathData="M 52,85 C 42,95 42,112 55,112 C 68,112 68,95 58,85 Z" android:fillColor="#38BDF8" />
+    <path android:pathData="M 148,85 C 138,95 138,112 151,112 C 164,112 164,95 154,85 Z" android:fillColor="#38BDF8" />
+    
     <!-- Sad Mouth -->
-    <path android:pathData="M 60,150 Q 100,120 140,150" android:strokeColor="#3E2723" android:strokeWidth="12" android:strokeLineCap="round"/>
+    <path android:pathData="M 65,148 Q 100,120 135,148" android:strokeColor="#3E2723" android:strokeWidth="10" android:strokeLineCap="round"/>
     </vector>

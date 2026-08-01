@@ -42,7 +42,7 @@ public class RatingDialog extends AppCompatDialog implements RatingBar.OnRatingB
     private final Activity context;
     private final Builder builder;
     private TextView tvTitle, tvContent;
-    private RotationRatingBar ratingBar;
+    private BaseRatingBar ratingBar;
     private ImageView ivIcon;
     Button btnRate;
     TextView btnLate;
@@ -94,6 +94,13 @@ public class RatingDialog extends AppCompatDialog implements RatingBar.OnRatingB
             }
         }
 //        btnRate.setBackground(drawable);
+
+        if (builder.starDrawableFilled != null) {
+            ratingBar.setFilledDrawable(builder.starDrawableFilled);
+        }
+        if (builder.starDrawableEmpty != null) {
+            ratingBar.setEmptyDrawable(builder.starDrawableEmpty);
+        }
 
         btnRate.setOnClickListener(v -> {
 
@@ -172,6 +179,9 @@ public class RatingDialog extends AppCompatDialog implements RatingBar.OnRatingB
             public void onRatingChange(BaseRatingBar ratingBar, float rating, boolean fromUser) {
                 int b = Math.round(rating);
                 starnumber = b;
+                if (fromUser) {
+                    animateSingleStar(b);
+                }
                 switch (b) {
                     case 0:
                         tvTitle.setText("Oh, no!");
@@ -214,6 +224,30 @@ public class RatingDialog extends AppCompatDialog implements RatingBar.OnRatingB
 
             }
         });
+    }
+
+    private void animateSingleStar(int count) {
+        if (ratingBar == null || count <= 0) return;
+        int index = count - 1;
+        if (index >= 0 && index < ratingBar.getChildCount()) {
+            final View starView = ratingBar.getChildAt(index);
+            if (starView != null) {
+                starView.animate()
+                        .scaleX(1.30f)
+                        .scaleY(1.30f)
+                        .setDuration(110)
+                        .withEndAction(() -> {
+                            if (starView != null) {
+                                starView.animate()
+                                        .scaleX(1.0f)
+                                        .scaleY(1.0f)
+                                        .setDuration(110)
+                                        .start();
+                            }
+                        })
+                        .start();
+            }
+        }
     }
 
     @Override
@@ -275,7 +309,7 @@ public class RatingDialog extends AppCompatDialog implements RatingBar.OnRatingB
         return ivIcon;
     }
 
-    public RotationRatingBar getRatingBarView() {
+    public BaseRatingBar getRatingBarView() {
         return ratingBar;
     }
 
@@ -386,6 +420,8 @@ public class RatingDialog extends AppCompatDialog implements RatingBar.OnRatingB
         private RatingDialogFormListener ratingDialogFormListener;
         private RatingDialogListener ratingDialogListener;
         private Drawable drawable;
+        private Drawable starDrawableFilled;
+        private Drawable starDrawableEmpty;
 
         private int session = 1;
         private float threshold = 1;
@@ -577,6 +613,16 @@ public class RatingDialog extends AppCompatDialog implements RatingBar.OnRatingB
 
         public Builder playstoreUrl(String playstoreUrl) {
             this.playstoreUrl = playstoreUrl;
+            return this;
+        }
+
+        public Builder starDrawableFilled(Drawable drawable) {
+            this.starDrawableFilled = drawable;
+            return this;
+        }
+
+        public Builder starDrawableEmpty(Drawable drawable) {
+            this.starDrawableEmpty = drawable;
             return this;
         }
 

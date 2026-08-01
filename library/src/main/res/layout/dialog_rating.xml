@@ -5,130 +5,149 @@
     android:layout_height="wrap_content"
     android:clipChildren="false"
     android:clipToPadding="false"
-    android:paddingTop="55dp"
-    android:paddingBottom="16dp">
+    android:paddingBottom="12dp">
 
-    <!-- The 3D Modern Card with Wave inside -->
+    <!-- Ultra Compact Modern Card -->
     <androidx.cardview.widget.CardView
         android:id="@+id/card_container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:cardBackgroundColor="@android:color/transparent"
-        app:cardCornerRadius="26dp"
-        app:cardElevation="12dp"
+        android:background="@color/white"
+        app:cardBackgroundColor="@color/white"
+        app:cardCornerRadius="20dp"
+        android:layout_marginHorizontal="@dimen/_12sdp"
+        app:cardElevation="8dp"
         app:strokeWidth="0dp">
 
-        <RelativeLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@drawable/rate_rounded_rectangle">
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingBottom="16dp">
 
-            <!-- Wavy Header Background inside the card -->
             <ImageView
                 android:id="@+id/imageView"
                 android:layout_width="match_parent"
-                android:layout_height="140dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toTopOf="parent"
+                android:adjustViewBounds="true"
                 android:scaleType="centerCrop"
-                android:src="@drawable/rate_wave_header" />
-
-            <LinearLayout
+                android:src="@drawable/top_rate_wave_header" />
+            <ImageView
+                android:id="@+id/imageView2"
+                android:scaleType="centerCrop"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:paddingHorizontal="16dp"
-                android:paddingTop="100dp"
-                android:paddingBottom="24dp">
+                app:layout_constraintTop_toBottomOf="@id/imageView"
+                android:adjustViewBounds="true"
+                android:src="@drawable/bottom_rate_wave_header" />
+            <ImageView
+                android:id="@+id/dialog_rating_icon"
+                android:layout_width="80dp"
+                app:layout_constraintTop_toBottomOf="@id/imageView"
+                app:layout_constraintBottom_toBottomOf="@id/imageView"
+                android:layout_height="80dp"
+                android:layout_gravity="center"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:elevation="12dp"
+                android:src="@drawable/rate_0" />
 
-                <TextView
-                    android:id="@+id/dialog_rating_title"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:text="We are working hard for a better user experience."
-                    android:textColor="#1E293B"
-                    android:textFontWeight="500"
-                    android:textSize="16sp" />
+            <TextView
+                android:id="@+id/dialog_rating_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginTop="6dp"
+                app:layout_constraintTop_toBottomOf="@id/imageView2"
+                android:gravity="center"
+                android:text="We are working hard for a better user experience."
+                android:textColor="#0F172A"
+                android:textSize="16sp"
+                android:textStyle="bold" />
 
-                <TextView
-                    android:id="@+id/dialog_rating_content"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:gravity="center"
-                    android:text="We’d greatly appreciate it if you could rate us."
-                    android:textColor="#64748B"
-                    android:textSize="14sp" />
+            <TextView
+                android:id="@+id/dialog_rating_content"
+                android:layout_width="match_parent"
+                app:layout_constraintTop_toBottomOf="@id/dialog_rating_title"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginTop="4dp"
+                android:gravity="center"
+                android:text="We’d greatly appreciate it if you could rate us."
+                android:textColor="#64748B"
+                android:textSize="13sp" />
 
-                <com.willy.ratingbar.RotationRatingBar
-                    android:id="@+id/dialog_rating_rating_bar"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="12dp"
-                    app:srb_clearRatingEnabled="false"
-                    app:srb_clickable="true"
-                    app:srb_isIndicator="false"
-                    app:srb_minimumStars="0"
-                    app:srb_numStars="5"
-                    app:srb_rating="0"
-                    app:srb_scrollable="true"
-                    app:srb_starHeight="36dp"
-                    app:srb_starPadding="6dp"
-                    app:srb_starWidth="36dp"
-                    app:srb_stepSize="1" />
+            <com.willy.ratingbar.ScaleRatingBar
+                android:id="@+id/dialog_rating_rating_bar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/dialog_rating_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="12dp"
+                app:srb_clearRatingEnabled="false"
+                app:srb_clickable="true"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:srb_drawableEmpty="@drawable/rate_star_empty"
+                app:srb_drawableFilled="@drawable/rate_star_filled"
+                app:srb_isIndicator="false"
+                app:srb_minimumStars="0"
+                app:srb_numStars="5"
+                android:layout_marginHorizontal="20dp"
+                app:srb_rating="0"
+                app:srb_scrollable="true"
+                app:srb_starHeight="34dp"
+                app:srb_starPadding="6dp"
+                app:srb_starWidth="34dp"
+                app:srb_stepSize="1" />
 
-                <TextView
-                    android:id="@+id/tv"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="12dp"
-                    android:gravity="center"
-                    android:text="The best we can get :)"
-                    android:textColor="#C71111"
-                    android:textSize="14sp"
-                    android:textStyle="bold" />
+            <TextView
+                android:id="@+id/tv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/dialog_rating_rating_bar"
+                android:layout_marginTop="8dp"
+                android:gravity="center"
+                android:layout_marginHorizontal="20dp"
+                android:text="The best we can get :)"
+                android:textColor="#E11D48"
+                android:textSize="13sp"
+                android:textStyle="bold" />
 
-                <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/btnRate"
-                    android:layout_width="match_parent"
-                    android:layout_height="54dp"
-                    android:layout_marginHorizontal="16dp"
-                    android:layout_marginTop="16dp"
-                    android:background="@drawable/rate_bg_button"
-                    android:elevation="6dp"
-                    android:foreground="?attr/selectableItemBackground"
-                    android:gravity="center"
-                    android:stateListAnimator="@null"
-                    android:text="RATE"
-                    android:textColor="@color/white"
-                    android:textSize="16sp"
-                    android:textStyle="bold" />
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnRate"
+                android:layout_width="match_parent"
+                app:layout_constraintTop_toBottomOf="@id/tv"
+                android:layout_marginHorizontal="28dp"
+                android:layout_height="44dp"
+                android:layout_marginTop="12dp"
+                android:background="@drawable/rate_bg_button"
+                android:elevation="4dp"
+                android:foreground="?attr/selectableItemBackground"
+                android:gravity="center"
+                android:stateListAnimator="@null"
+                android:text="RATE"
+                android:textColor="@color/white"
+                android:textSize="15sp"
+                android:textStyle="bold" />
 
-                <TextView
-                    android:id="@+id/btnLate"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:background="?attr/selectableItemBackground"
-                    android:gravity="center"
-                    android:padding="8dp"
-                    android:text="Maybe Later"
-                    android:textColor="#94A3B8"
-                    android:textSize="13sp" />
+            <TextView
+                android:id="@+id/btnLate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginTop="4dp"
+                android:background="?attr/selectableItemBackground"
+                app:layout_constraintTop_toBottomOf="@id/btnRate"
+                android:gravity="center"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:padding="4dp"
+                android:text="Maybe Later"
+                android:textColor="#94A3B8"
+                android:textSize="13sp" />
 
-            </LinearLayout>
-        </RelativeLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
-
-    <!-- The 3D Floating Emoji at the top center -->
-    <ImageView
-        android:id="@+id/dialog_rating_icon"
-        android:layout_width="110dp"
-        android:layout_height="110dp"
-        android:layout_alignTop="@id/card_container"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="-40dp"
-        android:elevation="16dp"
-        android:src="@drawable/rate_0" />
 
 </RelativeLayout>
