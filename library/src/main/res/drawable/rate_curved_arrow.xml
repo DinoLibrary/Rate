@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="28dp"
+    android:height="24dp"
+    android:viewportWidth="28"
+    android:viewportHeight="24">
+    <!-- Curved arrow line starting from left curving upwards to the right -->
+    <path
+        android:pathData="M 2,20 C 10,20 18,17 23,6"
+        android:strokeColor="#0D9488"
+        android:strokeWidth="2.2"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round" />
+    <!-- Arrowhead pointing top-right -->
+    <path
+        android:pathData="M 15,6 L 23,6 L 23,14"
+        android:strokeColor="#0D9488"
+        android:strokeWidth="2.2"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round" />
+</vector>
